@@ -12,7 +12,7 @@
 #include <stdlib.h>
 #include "szellner.h"
 #include <ctype.h>
-//
+
 
 int main()
 {
