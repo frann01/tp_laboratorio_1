@@ -8,10 +8,6 @@
 #ifndef ARRAYEMPLOYEES_H_
 #define ARRAYEMPLOYEES_H_
 
-
-
-#endif /* ARRAYEMPLOYEES_H_ */
-
 typedef struct
 {
     int id;
@@ -27,6 +23,10 @@ typedef struct
     int sectorId;
     int isEmpty;
 } eEmployee;
+
+#endif /* ARRAYEMPLOYEES_H_ */
+
+
 
 int menu();
 
