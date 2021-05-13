@@ -147,14 +147,24 @@ int altaEmpleado(eEmployee lista[], int tam, int* pLegajo, eSector sectores[], i
             printf("Ingrese el nombre: \n");
             fflush(stdin);
             gets(aux.Name);
+            while(validarString(aux.Name, strlen(aux.Name))==-1)
+            {
+                printf("Error! Ingrese un nombre valido: \n");
+                fflush(stdin);
+                gets(aux.Name);
+            }
 
             printf("Ingrese el apellido: \n");
             fflush(stdin);
             gets(aux.lastName);
+            while(validarString(aux.lastName, strlen(aux.lastName))==-1)
+            {
+                printf("Error! Ingrese un apellido valido: \n");
+                fflush(stdin);
+                gets(aux.lastName);
+            }
 
-            printf("Ingrese el sueldo: \n");
-            fflush(stdin);
-            scanf("%f",&aux.salary);
+            validarNum(&aux.salary, "Ingrese el sueldo: \n", "Error! Ingrese un numero: \n");
 
             mostrarSectores(sectores, TamSec);
             printf("Ingrese el ID del sector: \n");
@@ -347,7 +357,12 @@ void modificarEmpleado(eEmployee lista[], int tam, eSector sectores[],int tamSec
     printf("Ingrese el legajo de usuario: \n");
     fflush(stdin);
     scanf("%d", &opcionLegajo);
-
+    while(findEmployeeByID(lista, tam, opcionLegajo)==-1)
+    {
+        printf("No hay ningun empleado con ese legajo, ingrese uno correcto: \n");
+        fflush(stdin);
+        scanf("%d", &opcionLegajo);
+    }
     empleadoAModificar = findEmployeeByID(lista, tam, opcionLegajo);
     aux = lista[empleadoAModificar];
     system("cls");
@@ -363,6 +378,13 @@ void modificarEmpleado(eEmployee lista[], int tam, eSector sectores[],int tamSec
         fflush(stdin);
         scanf("%d", &datoAModificar);
         system("cls");
+        while(datoAModificar>4 || datoAModificar<1)
+        {
+            printf("Ingrese una opcion valida! \n");
+            fflush(stdin);
+            scanf("%d", &datoAModificar);
+            system("cls");
+        }
 
         switch(datoAModificar)
         {
@@ -371,6 +393,12 @@ void modificarEmpleado(eEmployee lista[], int tam, eSector sectores[],int tamSec
             printf("Ingrese el nombre: \n");
             fflush(stdin);
             gets(aux.Name);
+            while(validarString(aux.Name, strlen(aux.Name))==-1)
+            {
+                printf("Error! Ingrese un nombre valido: \n");
+                fflush(stdin);
+                gets(aux.Name);
+            }
             break;
 
         case 2:
@@ -378,13 +406,17 @@ void modificarEmpleado(eEmployee lista[], int tam, eSector sectores[],int tamSec
             printf("Ingrese el apellido: \n");
             fflush(stdin);
             gets(aux.lastName);
+            while(validarString(aux.lastName, strlen(aux.lastName))==-1)
+            {
+                printf("Error! Ingrese un nombre valido: \n");
+                fflush(stdin);
+                gets(aux.lastName);
+            }
             break;
 
         case 3:
             printf("Cambiar Sueldo \n");
-            printf("Ingrese el sueldo: \n");
-            fflush(stdin);
-            scanf("%f",&aux.salary);
+            validarNum(&aux.salary, "Ingrese el sueldo: \n", "Error! Ingrese un numero: \n");
             break;
 
         case 4:
@@ -403,22 +435,29 @@ void modificarEmpleado(eEmployee lista[], int tam, eSector sectores[],int tamSec
 
 
         default:
-            printf("Opcion incorrecta!\n");
+            printf("Opcion invalida!\n");
         }
 
         printf("Quiere cambiar otro dato?s/n\n");
         fflush(stdin);
         salir = getchar();
+        while(validarSN(salir)==-1)
+        {
+            printf("Por favor ingrese s/n\n");
+            fflush(stdin);
+            salir = getchar();
+        }
         system("cls");
     }
     while(salir != 'n');
-    printf("Desea guardar los datos?\n");
+    printf("Desea guardar los datos?s/n\n");
     fflush(stdin);
     scanf("%c", &salir);
 
     if(salir=='s')
     {
         lista[empleadoAModificar] = aux;
+        printf("Cambios guardados\n");
     }
     else
     {
@@ -477,6 +516,12 @@ int bajaEmpleado(eEmployee lista[], int tam, eSector sectores[], int tamSec)
     printf("Seguro desea dar de baja a este empleado? s/n \n");
     fflush(stdin);
     scanf("%c", &resBaja);
+    while(validarSN(resBaja)==-1)
+    {
+        printf("Por favor ingrese s/n\n");
+        fflush(stdin);
+        resBaja = getchar();
+    }
 
     if(resBaja=='s')
     {
@@ -618,3 +663,70 @@ int harcodearEmpleados(eEmployee lista[], int tam, int cant,int* pLegajo)
     }
     return todoOk;
 }
+
+/** \brief toma una cadena de caracteres y valida que todos lo sean
+ *
+ * \param cadena[] char cadena a validar
+ * \param tam int tamaño de la cadena
+ * \return int devuelve -1 si hay un valor que no sea un caracter
+ *
+ */
+int validarString(char cadena[], int tam)
+{
+    int todoOk=0;
+
+    for(int i = 0; i<tam ; i++)
+    {
+        cadena[i]=tolower(cadena[i]);
+        if(cadena[i]<97 || cadena[i]>122)
+        {
+            todoOk=-1;
+        }
+    }
+    return todoOk;
+}
+
+
+/** \brief valida que una valor dado sea un numero y lo guarda en una variable fuera de la funcion
+ *
+ * \param pResultado float* variable donde se guarda el numero
+ * \param mensaje char* mensaje que pide el valor
+ * \param mensajeError char* mensaje en caso de que el valor no sea un numero
+ * \return void
+ *
+ */
+void validarNum(float* pResultado, char* mensaje, char* mensajeError)
+{
+    float num;
+    printf(mensaje);
+    fflush(stdin);
+    while(scanf("%f", &num)!=1)
+    {
+        printf(mensajeError);
+        fflush(stdin);
+    }
+    *pResultado = num;
+}
+
+/** \brief valida que el valor ingresado sea s/n
+ *
+ * \param simbolo char caracter a validar
+ * \return int devuelve -1 si no es correcto
+ *
+ */
+int validarSN(char simbolo)
+{
+    int todoOk=-1;
+    simbolo=tolower(simbolo);
+    if(simbolo=='s' || simbolo == 'n')
+    {
+        todoOk=0;
+    }
+    return todoOk;
+}
+
+
+
+
+
+

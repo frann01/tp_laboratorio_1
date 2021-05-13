@@ -12,7 +12,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "ArrayEmployees.h"
-#define TAM 10
+#define TAM 1000
 #define TAMSEC 5
 
 int main(void)
@@ -24,7 +24,7 @@ int main(void)
 	    eSector sectores[TAMSEC]= {{500, "Sistemas"},{501, "Legales"},{502, "RRHH"}, {503, "Contable"}, {504,"ventas"}};
 	    eEmployee nomina[TAM];
 	    initEmployees(nomina,TAM);
-	    harcodearEmpleados(nomina, TAM, 10, &legajo);
+//	    harcodearEmpleados(nomina, TAM, 10, &legajo);
 
 	    do
 	    {
@@ -111,6 +111,12 @@ int main(void)
 	                    printf("Seguro desea volver?\n");
 	                    fflush(stdin);
 	                    respuestaMenu = getchar();
+	                    while(validarSN(respuestaMenu)==-1)
+	                    {
+	                    	 printf("Por favor ingrese s/n\n");
+	                    	 fflush(stdin);
+	                    	 respuestaMenu = getchar();
+	                    }
 	                    break;
 
 	                default:
@@ -126,11 +132,17 @@ int main(void)
 	            printf("Seguro desea salir?\n");
 	            fflush(stdin);
 	            salir = getchar();
+	            while(validarSN(salir)==-1)
+	            {
+	                printf("Por favor ingrese s/n\n");
+	                fflush(stdin);
+					salir = getchar();
+	            }
 	            break;
 
-	        case 6:
-	            printEmployees(nomina, TAM, sectores, TAMSEC);
-	            break;
+//	        case 6:
+//	            printEmployees(nomina, TAM, sectores, TAMSEC);
+//	            break;
 
 
 	        default:

@@ -36,6 +36,9 @@ int initEmployees(eEmployee lista[], int tam);
 int cargarDecripcionSector(int id, eSector sectores[],int tam, char desc[]);
 void mostrarSector(eSector sector);
 void mostrarSectores(eSector sectores[],int tam);
+int validarString(char cadena[], int tam);
+void validarNum(float* pResultado, char* mensaje, char* mensajeError);
+int validarSN(char simbolo);
 
 int printEmployees(eEmployee list[], int len, eSector sectores[], int tamSec);
 int findEmployeeByID(eEmployee list[], int len, int id);
