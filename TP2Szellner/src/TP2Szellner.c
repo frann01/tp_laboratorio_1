@@ -20,7 +20,7 @@ int main(void)
 	setvbuf(stdout, NULL, _IONBF, 0);
 	int respuesta;
 	    int legajo=20000;
-	    char salir;
+	    char salir ='n';
 	    eSector sectores[TAMSEC]= {{500, "Sistemas"},{501, "Legales"},{502, "RRHH"}, {503, "Contable"}, {504,"ventas"}};
 	    eEmployee nomina[TAM];
 	    initEmployees(nomina,TAM);
@@ -68,77 +68,73 @@ int main(void)
 	            break;
 
 	        case 4:
-	            system("cls");
-	            char respuestaMenu='n';
-	            do
-	            {
+	        	system("cls");
+	        	if(listaVacia(nomina, TAM)==-1)
+	        	{
+	        	    printf("No hay ningun empleado ingresado\n");
+	        	    printf("Primero ingrese un empleado\n");
+	        	}
+	        	else
+	        	{
+	        	    char respuestaMenu='n';
+	        	    do
+	        	    {
 
-	                int respuestaInformes;
-	                printf("***Informes*** \n\n");
-	                printf("1) Listar empleados \n");
-	                printf("2) Total y promedios de salarios\n");
-	                printf("3) Volver\n");
-	                fflush(stdin);
-	                scanf("%d", &respuestaInformes);
-	                switch(respuestaInformes)
-	                {
-	                case 1:
-	                    if(listaVacia(nomina, TAM)==-1)
-	                    {
-	                        printf("No hay ningun empleado ingresado\n");
-	                        printf("Primero ingrese un empleado\n");
-	                    }
-	                    else
-	                    {
-	                        sortEmployees(nomina, TAM,1);
-	                        printEmployees(nomina, TAM, sectores, TAMSEC);
-	                    }
-	                    break;
+	        	        int respuestaInformes;
+	        	        printf("***Informes*** \n\n");
+	        	        printf("1) Listar empleados \n");
+	        	        printf("2) Total y promedios de salarios\n");
+	        	        printf("3) Volver\n");
+	        	        fflush(stdin);
+	        	        scanf("%d", &respuestaInformes);
+	        	        switch(respuestaInformes)
+	        	        {
+	        	            case 1:
+	        	                if(listaVacia(nomina, TAM)==-1)
+	        	                {
+	        	                     printf("No hay ningun empleado ingresado\n");
+	        	                     printf("Primero ingrese un empleado\n");
+	        	                }
+	        	                else
+	        	                {
+	        	                     sortEmployees(nomina, TAM,1);
+	        	                     printEmployees(nomina, TAM, sectores, TAMSEC);
+	        	                }
+	        	                break;
 
-	                case 2:
-	                    if(listaVacia(nomina, TAM)==-1)
-	                    {
-	                        printf("No hay ningun empleado ingresado\n");
-	                        printf("Primero ingrese un empleado\n");
-	                    }
-	                    else
-	                    {
-	                        informesSueldos(nomina, TAM);
-	                    }
-	                    break;
+	        	            case 2:
+	        	                if(listaVacia(nomina, TAM)==-1)
+	        	                {
+	        	                     printf("No hay ningun empleado ingresado\n");
+	        	                     printf("Primero ingrese un empleado\n");
+	        	                }
+	        	                else
+	        	                {
+	        	                     informesSueldos(nomina, TAM);
+	        	                }
+	        	                break;
 
-	                case 3:
-	                    printf("Seguro desea volver?\n");
-	                    fflush(stdin);
-	                    respuestaMenu = getchar();
-	                    while(validarSN(respuestaMenu)==-1)
-	                    {
-	                    	 printf("Por favor ingrese s/n\n");
-	                    	 fflush(stdin);
-	                    	 respuestaMenu = getchar();
-	                    }
-	                    break;
+	        	            case 3:
+	        	                printf("Seguro desea volver?\n");
+	        	                fflush(stdin);
+	        	                respuestaMenu = getchar();
+	        	                break;
 
-	                default:
-	                    printf("Opcion incorrecta!\n");
-	                }
-	                system("pause");
-	                system("cls");
-	            }
-	            while(respuestaMenu=='n');
-	            break;
+	        	            default:
+	        	                printf("Opcion incorrecta!\n");
+	        	            }
+	        	            system("pause");
+	        	            system("cls");
+	        	       }
+	        	       while(respuestaMenu=='n');
+	        	 }
+	        	 break;
 
 	        case 5:
-	            printf("Seguro desea salir?\n");
-	            fflush(stdin);
-	            salir = getchar();
-	            while(validarSN(salir)==-1)
-	            {
-	                printf("Por favor ingrese s/n\n");
-	                fflush(stdin);
-					salir = getchar();
-	            }
-	            break;
+	             printf("Seguro desea salir?\n");
+	             fflush(stdin);
+	             salir = getchar();
+	             break;
 
 //	        case 6:
 //	            printEmployees(nomina, TAM, sectores, TAMSEC);
