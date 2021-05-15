@@ -110,7 +110,7 @@ int listaVacia(eEmployee lista[], int tam)
 int menu()
 {
     int respuesta;
-    printf("***ABM Empleados*** \n\n");
+    printf("***Empleados*** \n\n");
     printf("1) Alta empleado\n");
     printf("2) Modificar empleado \n");
     printf("3) Baja empleado\n");
@@ -617,7 +617,7 @@ int informesSueldos(eEmployee list[], int len)
 
         for(int i=0; i< len; i++)
         {
-            if(list[i].salary>= promedio)
+            if(list[i].salary>= promedio && list[i].isEmpty !=0)
             {
                 sueldoMayorPromedio++;
             }
