@@ -31,6 +31,14 @@ struct LinkedList
 }typedef LinkedList;
 #endif
 
+typedef struct
+{
+    int id;
+    char* nombre;
+    char sexo;
+    int edad;
+} eMascota;
+
 
 
 //Publicas

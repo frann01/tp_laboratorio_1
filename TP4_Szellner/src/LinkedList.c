@@ -305,15 +305,15 @@ int ll_deleteLinkedList(LinkedList* this)
 int ll_indexOf(LinkedList* this, void* pElement)
 {
     int returnAux = -1;
-    Node* auxNodo=NULL;
+    void* aux=NULL;
     int tam;
     tam =ll_len(this);
     if(this!=NULL)
     {
         for(int i=0; i<tam; i++)
         {
-            auxNodo=getNode(this, i);
-            if(pElement==auxNodo->pElement)
+            aux=ll_get(this, i);
+            if(pElement==aux)
             {
                 returnAux=i;
                 break;
@@ -413,7 +413,7 @@ int ll_contains(LinkedList* this, void* pElement)
     if(this !=NULL)
     {
         returnAux=1;
-        if(ll_indexOf(this, pElement)==-1)
+        if(ll_indexOf(this, pElement)!=-1)
         {
             returnAux=0;
         }

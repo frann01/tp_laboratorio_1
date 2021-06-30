@@ -245,13 +245,13 @@
 	<stdlib.h>
 	<string.h>
 
-1624893674 source:c:\users\usuario\desktop\tps y ejercicios c\tp_laboratorio_1\tp4_szellner\src\linkedlist.c
+1625074297 source:c:\users\usuario\desktop\tps y ejercicios c\tp_laboratorio_1\tp4_szellner\src\linkedlist.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"../inc/LinkedList.h"
 
-1560475730 c:\users\usuario\desktop\tps y ejercicios c\tp_laboratorio_1\tp4_szellner\inc\linkedlist.h
+1625070976 c:\users\usuario\desktop\tps y ejercicios c\tp_laboratorio_1\tp4_szellner\inc\linkedlist.h
 
 1560475730 source:c:\users\usuario\desktop\tps y ejercicios c\tp_laboratorio_1\tp4_szellner\testing\src\addnodetest.c
 	"../../testing/utest.h"
@@ -482,7 +482,7 @@
 	<stdlib.h>
 	<string.h>
 
-1624893764 source:c:\users\usuario\desktop\tps y ejercicios c\tp_laboratorio_1\tp4_szellner\src\main.c
+1625074153 source:c:\users\usuario\desktop\tps y ejercicios c\tp_laboratorio_1\tp4_szellner\src\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -490,4 +490,10 @@
 	"../inc/LinkedList.h"
 
 1560475730 c:\users\usuario\desktop\tps y ejercicios c\tp_laboratorio_1\tp4_szellner\testing\inc\main_test.h
+
+1625070068 source:c:\users\usuario\desktop\tps y ejercicios c\tp_laboratorio_1\tp4_szellner\src\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"../inc/LinkedList.h"
 
