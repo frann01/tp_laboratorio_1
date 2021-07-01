@@ -27,6 +27,8 @@ int compararEdad(void* valor1, void* valor2);
 void mostraMascota(eMascota* mascota);
 void mostrarMascotas(LinkedList* this);
 
+//Cada bloque prueba una funcion diferente
+
 int main(void)
 {
     //	startTesting(1);  // ll_newLinkedList
@@ -41,7 +43,7 @@ int main(void)
     eMascota m4 = {1237, "Juana", 'f', 10};
     eMascota m5 = {1238, "Marco", 'm', 3};
 
-//	startTesting(5);  // ll_add
+//	startTesting(5);  // ll_add agrega un elemento a la lista
     ll_add(lista, &m1);
     ll_add(lista, &m2);
     ll_add(lista, &m3);
@@ -54,12 +56,10 @@ int main(void)
 
 
 //	startTesting(3);  // getNode - test_getNode
-
-
 //	startTesting(4);  // addNode - test_addNode
 
 
-//	startTesting(6);  // ll_get  Anda
+//	startTesting(6);  // ll_get
 //    eMascota* pPrueba=NULL;
 //    pPrueba = (eMascota*) ll_get(lista,0);
 //    mostraMascota(pPrueba);
